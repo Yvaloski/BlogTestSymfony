@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+	<article class="">
+		<h2>{{article.title}}</h2>
+
+		<div class="content">
+			<img src="{{article.image}}" alt="">
+			{{article.content | raw}}
+		</div>
+		<div class="metadata">Ecrit le{{article.createdAt | date('d/m/y')}}
+			dans la catégorie
+			{{article.category.title}}
+		</div>
+	</article>
+	<section class="commentaires">
+		{% for comment in article.comments %}
+			<div class="comment">
+				<div class="row">
+					<div class="col-4">
+						{{comment.author}}
+					</div>
+					<div class="col">
+						{{comment.content | raw}}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+
+		{% if app.user %}
+
+			{{form_start(commentForm)}}
+			{{form_row(commentForm.author)}}
+			{{form_row(commentForm.content)}}
+
+			<button type:submit class="btn btn-secondary">Valider</button>
+		{% else %}
+
+			<h3>Connectez vous pour pouvoir écrire un commentaire !</h3>
+
+
+		{% endif %}
+
+
+		{{form_end(commentForm)}}
+	</section>
+
+
+{% endblock %}

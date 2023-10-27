@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+	<h1>Connexion</h1>
+
+	<form action="{{path('security_login')}}" method="post" accept-charset="UTF-8">
+
+
+		<h3>
+			<label for="_username">
+				email</label>
+		</h3>
+		<input class="form-control m-3" id="_username" type="email" name="_username" value="">
+
+		<h3>
+			<label for="password">Password</label>
+		</h3>
+		<input class="form-control m-3" id="_password" type="password" name="_password">
+
+
+		<input class="form-control mt-3 btn btn-success" type="submit" value="Login">
+
+
+	</form>
+
+	<p>
+		<a href="">Forgot your password?</a>
+	</p>
+
+{% endblock %}
